@@ -8,26 +8,37 @@ addEventListener("fetch", (event) => {
 /**
  * Returns a random number from 0 (inclusive) to max (exclusive)
  * using the current timestamp
- * @param {number} max 
+ * 
+ * @param {number} max
+ * @returns {number}
  */
 function getRandomInt(max) {
   return Date.now() % max;
 }
 
 /**
+ * @typedef {Object} UrlVariants
+ * @property {Array<string>} variants - The URL variants
+ */
+
+/**
  * Fetch the URL variants through variantsListUrl
+ *
+ * @returns {Promise<UrlVariants>}
  */
 async function fetchUrlVariants() {
   const response = await fetch(variantsListUrl);
   if (response.ok) {
     return await response.json();
   }
-  return [];
+  return { variants: [] };
 }
 
 /**
  * Fetch and choose a URL variant from an array with each element
  * having equal probability of being chosen
+ *
+ * @returns {Promise<string>}
  */
 async function chooseUrlVariant() {
   const urls = (await fetchUrlVariants()).variants;
@@ -38,6 +49,7 @@ async function chooseUrlVariant() {
  * Respond with one of the two variants given by variantsListUrl
  *
  * @param {Request} request
+ * @returns {Promise<Response>}
  */
 async function handleRequest(request) {
   try {
