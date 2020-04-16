@@ -8,11 +8,14 @@ addEventListener("fetch", (event) => {
 /**
  * Returns a random number from 0 (inclusive) to max (exclusive)
  * using the current timestamp
- * 
+ *
  * @param {number} max
  * @returns {number}
  */
 function getRandomInt(max) {
+  if (max <= 0) {
+    return 0;
+  }
   return Date.now() % max;
 }
 
