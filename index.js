@@ -5,8 +5,13 @@ addEventListener("fetch", (event) => {
   event.respondWith(handleRequest(event.request));
 });
 
+/**
+ * Returns a random number from 0 (inclusive) to max (exclusive)
+ * using the current timestamp
+ * @param {number} max 
+ */
 function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
+  return Date.now() % max;
 }
 
 /**
