@@ -1,6 +1,6 @@
 name = "random-website-variant-chooser"
 type = "javascript"
-account_id = ""
+account_id = "e776cc54cd5839dc90c4682ea5d50fe2"
 workers_dev = true
 route = ""
 zone_id = ""
