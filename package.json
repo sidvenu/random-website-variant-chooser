@@ -3,15 +3,17 @@
   "name": "random-website-variant-chooser",
   "version": "1.0.0",
   "description": "A random website-variant chooser for Cloudflare Fullstack Internship Application 2020",
-  "type": "module",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
+    "build": "webpack index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write '**/*.{js,css,json,md}'"
   },
   "author": "Siddharth Venu <siddharthvvenu@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
   }
 }

@@ -1,7 +1,9 @@
+import ModifyResponse from "./modify-response";
+
 const variantsListUrl =
   "https://cfw-takehome.developers.workers.dev/api/variants";
 
-addEventListener("fetch", (event) => {
+addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request));
 });
 
@@ -49,7 +51,8 @@ async function chooseUrlVariant() {
 }
 
 /**
- * Respond with one of the two variants given by variantsListUrl
+ * Respond with the modified version of one of the two variants
+ * given by variantsListUrl
  *
  * @param {Request} request
  * @returns {Promise<Response>}
@@ -57,7 +60,7 @@ async function chooseUrlVariant() {
 async function handleRequest(request) {
   try {
     const urlChosen = await chooseUrlVariant();
-    return await fetch(urlChosen);
+    return ModifyResponse.modifyResponse(await fetch(urlChosen));
   } catch (e) {
     console.log(`Exception ${e}`);
     return new Response("Internal Server Error", { status: 500 });
