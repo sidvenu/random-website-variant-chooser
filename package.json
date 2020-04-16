@@ -1,14 +1,14 @@
 {
   "private": true,
-  "name": "worker",
+  "name": "random-website-variant-chooser",
   "version": "1.0.0",
-  "description": "A template for kick starting a Cloudflare Workers project",
+  "description": "A random website-variant chooser for Cloudflare Fullstack Internship Application 2020",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write '**/*.{js,css,json,md}'"
   },
-  "author": "Kristian Freeman <kristian@kristianfreeman.com>",
+  "author": "Siddharth Venu <siddharthvvenu@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "prettier": "^1.18.2"
