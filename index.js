@@ -1,7 +1,10 @@
 import ModifyResponse from "./modify-response";
+import CookieManager from "./cookie-manager";
 
 const variantsListUrl =
   "https://cfw-takehome.developers.workers.dev/api/variants";
+const chosenUrlCookieName = "chosenUrlIndex";
+let chosenUrlIndex = NaN;
 
 addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request));
@@ -40,14 +43,42 @@ async function fetchUrlVariants() {
 }
 
 /**
- * Fetch and choose a URL variant from an array with each element
- * having equal probability of being chosen
+ * If a cookie is set already that has the chosenUrlIndex, then
+ * use the chosenUrlIndex to choose from the URL variants.
+ * If not, choose a URL variant from the array with each
+ * element having equal probability of being chosen, and set
+ * a cookie with that value.
  *
- * @returns {Promise<string>}
+ * @param {Request} request
+ * @param {Array<string>} urls
+ * @returns {string}
  */
-async function chooseUrlVariant() {
-  const urls = (await fetchUrlVariants()).variants;
-  return urls[getRandomInt(urls.length)];
+function chooseUrlVariant(request, urls) {
+  chosenUrlIndex = getRandomInt(urls.length);
+
+  const cookieValue = CookieManager.getCookie(
+    chosenUrlCookieName,
+    request.headers.get("Cookie")
+  );
+  if (!isNaN(Number(cookieValue))) {
+    chosenUrlIndex = Number(cookieValue);
+  }
+
+  return urls[chosenUrlIndex];
+}
+
+/**
+ * Uses the Set-Cookie header to set the chosen URL index in a
+ * cookie "chosenUrlCookie"
+ *
+ * @param {string} cookie
+ * @param {Response} response
+ */
+function setCookieInResponse(response) {
+  response.headers.set(
+    "Set-Cookie",
+    CookieManager.bakeCookie(chosenUrlCookieName, `${chosenUrlIndex}`)
+  );
 }
 
 /**
@@ -59,8 +90,15 @@ async function chooseUrlVariant() {
  */
 async function handleRequest(request) {
   try {
-    const urlChosen = await chooseUrlVariant();
-    return ModifyResponse.modifyResponse(await fetch(urlChosen));
+    const urlChosen = chooseUrlVariant(
+      request,
+      (await fetchUrlVariants()).variants
+    );
+
+    const response = ModifyResponse.modifyResponse(await fetch(urlChosen));
+    setCookieInResponse(response);
+
+    return response;
   } catch (e) {
     console.log(`Exception ${e}`);
     return new Response("Internal Server Error", { status: 500 });

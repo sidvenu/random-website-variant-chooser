@@ -3,6 +3,7 @@ export default class ModifyResponse {
    * Modify the response with HTMLRewriter to include details about
    * Show Off Open Source
    * @param {Response} response
+   * @returns {Response} response
    */
   static modifyResponse(response) {
     return new HTMLRewriter().on("*", new ElementHandler()).transform(response);
