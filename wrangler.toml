@@ -1,6 +1,6 @@
 name = "random-website-variant-chooser"
 type = "javascript"
 account_id = "e776cc54cd5839dc90c4682ea5d50fe2"
-workers_dev = true
-route = ""
-zone_id = ""
+workers_dev = false
+route = "random.sidvenu.ml"
+zone_id = "06a33332393f849f2374e3a3eaa54c85"
