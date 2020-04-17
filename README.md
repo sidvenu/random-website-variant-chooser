@@ -1,8 +1,27 @@
 # Cloudflare Workers Internship Application: Full-Stack
 
-## What is it?
+## Checklist
 
-Using Cloudflare Workers, you'll deploy an application that will randomly send users to one of two webpages. This project will teach you how to write applications with the Cloudflare Workers API, manage and develop them using the command-line tool Wrangler, and deploy them to the free workers.dev deployment playground.
+- [x] Request the URLs from the API
+- [x] Request a (random: see #3) variant
+- [x] Distribute requests between variants
+
+Deployment:
+
+- [x] Register a workers.dev subdomain
+- [x] A user should be able to visit the deployed version of the site
+
+Extra Credit:
+
+- [x] Changing copy/URLs
+- [x] Persisting variants
+- [x] Publish to a domain - [link](https://random.sidvenu.ml/)
+
+## Submission Links
+
+- [GitHub Repository](https://github.com/sidvenu/random-website-variant-chooser)
+- [Custom Domain Worker](https://random.sidvenu.ml/)
+- [Worker](https://random-website-variant-chooser.sidvenu.workers.dev/)
 
 ## Useful Links
 
