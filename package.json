@@ -5,7 +5,7 @@
   "description": "A random website-variant chooser for Cloudflare Fullstack Internship Application 2020",
   "main": "dist/main.js",
   "scripts": {
-    "build": "webpack index.js",
+    "build": "webpack src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write '**/*.{js,css,json,md}'"
   },
