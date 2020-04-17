@@ -1,5 +1,11 @@
 # Cloudflare Workers Internship Application: Full-Stack
 
+## Structure
+
+`src/` contains all the source files, split based on its functionality. [Webpack](https://webpack.js.org/) is used to bundle all the source files into `dist/main.js`. It is then published using [`wrangler`](https://github.com/cloudflare/wrangler) to [Cloudflare Workers](https://workers.cloudflare.com/).
+
+[Prettier](https://prettier.io/) is used for formatting the code before making a commit.
+
 ## Checklist
 
 - [x] Request the URLs from the API
