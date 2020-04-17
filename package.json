@@ -15,5 +15,10 @@
     "prettier": "^1.18.2",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
-  }
+  },
+  "repository": {
+    "url": "https://github.com/sidvenu/random-website-variant-chooser",
+    "type": "git"
+  },
+  "bugs": "https://github.com/sidvenu/random-website-variant-chooser/issues"
 }
