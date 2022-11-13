@@ -14,7 +14,7 @@
   "devDependencies": {
     "prettier": "^1.18.2",
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.12"
   },
   "repository": {
     "url": "https://github.com/sidvenu/random-website-variant-chooser",
